@@ -2,7 +2,7 @@
 
 ## Getting Started
 
-Install <strong>WPGraphQL</strong> plugin in your WordPress installation. Then clone this repository. Create a `.env.local` file and add your website's Graphql url, for example `APIURL=http://wpnext.test/graphql`.
+Install <strong>WPGraphQL</strong> plugin in your WordPress installation. Then clone this repository and run `npm install`. Create a `.env.local` file and add your website's Graphql url, for example `APIURL=http://wpnext.test/graphql`.
 
 Then run `npm run dev`.
 
