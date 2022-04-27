@@ -1,7 +1,7 @@
 // import Image from 'next/image'
 import Link from 'next/link'
 import Layout from '../src/components/layouts/layout'
-import { PRODUCTS_QUERY } from '../src/quries/posts'
+import { POSTS_QUERY } from '../src/quries/posts'
 import styles from '../styles/post.module.css'
 
 export default function Home({ posts }) {
@@ -35,7 +35,7 @@ export async function getStaticProps() {
         method: 'post',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-            query: PRODUCTS_QUERY
+            query: POSTS_QUERY
         })
     });
 
