@@ -2,6 +2,7 @@
 import Link from 'next/link'
 import Layout from '../src/components/layouts/layout'
 import { POSTS_QUERY } from '../src/quries/posts'
+import wpFetch from '../src/utils/wpFetch'
 import styles from '../styles/post.module.css'
 
 export default function Home({ posts }) {
@@ -31,16 +32,12 @@ export default function Home({ posts }) {
 
 export async function getStaticProps() {
     const url = process.env.APIURL
-    const res = await fetch(url, {
-        method: 'post',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            query: POSTS_QUERY
-        })
-    });
+    // post query added in the request body
+    const json = await wpFetch(url, {
+        body: JSON.stringify({ query: POSTS_QUERY })
+    })
 
-    const json = await res.json()
-    return{
-        props: { posts: json.data.posts }
+    return {
+        props: { posts: json?.data?.posts }
     }
 }

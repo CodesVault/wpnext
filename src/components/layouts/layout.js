@@ -5,11 +5,11 @@ const Layout = (props) => {
         <div>
             <Head>
                 <title>WP NextJS</title>
-                <meta name="description" content="Template for creating NextJS app for Headless WordPress" />
+                <meta name="description" content="Boilerplate for creating NextJS app for Headless WordPress" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             
-            <div className="wd-content">{props.children}</div>
+            <div className="wp-content">{props.children}</div>
         </div>
     );
 };
