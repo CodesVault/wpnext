@@ -6,8 +6,7 @@ const wpFetch = async (url, options = {}) => {
     const httpOptions = { ...defaultOptions, ...options }
 
     const res = await fetch(url, httpOptions);
-    const json = await res.json();
-    return json;
+    return await res.json()
 }
 
 export default wpFetch;
