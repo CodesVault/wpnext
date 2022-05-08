@@ -1,12 +1,22 @@
+import Image from 'next/image'
 import Layout from '../../src/components/layouts/layout';
 import { POST_QUERY } from '../../src/quries/post';
 import { POSTS_QUERY } from '../../src/quries/posts';
 import wpFetch from '../../src/utils/wpFetch';
 
 const Post = ({post}) => {
-    console.log(post)
+    // console.log(post)
+    let featuredImage;
+    if (post.featuredImage) {
+        featuredImage = <Image
+            src={post.featuredImage.node?.sourceUrl}
+            alt={post.featuredImage.node?.altText}
+            width="800"
+            height="400" />
+    }
     return (
         <Layout>
+            {featuredImage}
             <h1>{post.title}</h1>
             <div dangerouslySetInnerHTML={{ __html: post.content }} />
         </Layout>

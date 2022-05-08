@@ -5,6 +5,12 @@ export const POST_QUERY = `
             title
             content
             date
+            featuredImage {
+                node {
+                    sourceUrl
+                    altText
+                }
+            }
         }
     }
 `
