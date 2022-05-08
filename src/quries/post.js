@@ -1,10 +1,10 @@
 export const POST_QUERY = `
-    query POST {
-        post(id: ID!) {
-        slug
-        title
-        content
-        date
+    query SINGLEPOST($id: ID!, $idType: PostIdType!) {
+        post(id: $id, idType: $idType) {
+            slug
+            title
+            content
+            date
         }
     }
 `

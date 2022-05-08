@@ -6,7 +6,6 @@ import wpFetch from '../src/utils/wpFetch'
 import styles from '../styles/post.module.css'
 
 export default function Home({ posts }) {
-    // console.log('posts', posts)
     return (
         <Layout>
             <div className={styles.container}>

@@ -3,19 +3,18 @@ import { POST_QUERY } from '../../src/quries/post';
 import { POSTS_QUERY } from '../../src/quries/posts';
 import wpFetch from '../../src/utils/wpFetch';
 
-const Post = ({ post, params }) => {
+const Post = ({post}) => {
+    console.log(post)
     return (
         <Layout>
-            {/* <div className="wp-content">
-                <h1>{post.title}</h1>
-                <div dangerouslySetInnerHTML={{ __html: post.content }} />
-            </div> */}
+            <h1>{post.title}</h1>
+            <div dangerouslySetInnerHTML={{ __html: post.content }} />
         </Layout>
     );
 }
-
 export default Post;
 
+// set context params
 export async function getStaticPaths() {
     const url = process.env.APIURL
     const json = await wpFetch(url, { 
@@ -32,20 +31,19 @@ export async function getStaticPaths() {
     }
 }
 
-export async function getStaticProps({ params }) {
-    console.log('params', params)
+export async function getStaticProps(context) {
     const url = process.env.APIURL
     const json = await wpFetch(url, {
         body: JSON.stringify({
             query: POST_QUERY,
             variables: {
-                id: params.slug,
+                id: context.params.slug,
                 idType: 'SLUG'
             }
         })
     })
 
     return {
-        props: { post: json }
+        props: { post: json?.data?.post }
     }
 }
