@@ -3,6 +3,7 @@ import Layout from '../../src/components/layouts/layout';
 import { POST_QUERY } from '../../src/quries/post';
 import { POSTS_QUERY } from '../../src/quries/posts';
 import wpFetch from '../../src/utils/wpFetch';
+import styles from '../../styles/singlepost.module.css'
 
 const Post = ({post}) => {
     // console.log(post)
@@ -15,10 +16,12 @@ const Post = ({post}) => {
             height="400" />
     }
     return (
-        <Layout>
-            {featuredImage}
-            <h1>{post.title}</h1>
-            <div dangerouslySetInnerHTML={{ __html: post.content }} />
+        <Layout title={post.title}>
+            <div className={styles.wrapper}>
+                {featuredImage}
+                <h1 className={styles.title}>{post.title}</h1>
+                <div dangerouslySetInnerHTML={{ __html: post.content }} />
+            </div>
         </Layout>
     );
 }

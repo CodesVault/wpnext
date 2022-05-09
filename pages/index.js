@@ -1,4 +1,3 @@
-// import Image from 'next/image'
 import Link from 'next/link'
 import Layout from '../src/components/layouts/layout'
 import { POSTS_QUERY } from '../src/quries/posts'
@@ -7,23 +6,21 @@ import styles from '../styles/post.module.css'
 
 export default function Home({ posts }) {
     return (
-        <Layout>
-            <div className={styles.container}>
-                <div className={styles.wrapper}>
-                    {posts.nodes.map(post => {
-                        const date = new Date(post.date).toLocaleString(undefined, {year: 'numeric', month: '2-digit', day: '2-digit'})
-                        
-                        return(
-                            <div className={styles.post} key={post.slug}>
-                                <h2 className={styles.title}>
-                                    <Link href={`/posts/${post.slug}`}>{post.title}</Link>
-                                </h2>
-                                <div className={styles.date}>{date}</div>
-                                <div dangerouslySetInnerHTML={{__html: post.excerpt}}></div>
-                            </div>
-                        )
-                    })}
-                </div>
+        <Layout title="Home">
+            <div className={styles.wrapper}>
+                {posts?.nodes.map(post => {
+                    const date = new Date(post.date).toLocaleString(undefined, {year: 'numeric', month: '2-digit', day: '2-digit'})
+                    
+                    return(
+                        <div className={styles.post} key={post.slug}>
+                            <h2 className={styles.title}>
+                                <Link href={`/posts/${post.slug}`}>{post.title}</Link>
+                            </h2>
+                            <div className={styles.date}>{date}</div>
+                            <div dangerouslySetInnerHTML={{__html: post.excerpt}}></div>
+                        </div>
+                    )
+                })}
             </div>
         </Layout>
     )
